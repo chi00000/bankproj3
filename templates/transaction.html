@@ -3,24 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <title>交易紀錄</title>
+
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
 </head>
 <body>
 
 <div class="recordContainer">
   <h2>交易紀錄</h2>
 
-  <div id="transactionList" class="transactionList">
-  </div>
+  <div id="transactionList" class="transactionList"></div>
 
-  <button class="balanceButton"  onclick="location.href='menu.html'">回選單</button>
+  <!-- ✅ 修正回選單路徑（避免 /transaction/menu.html 404） -->
+  <button class="balanceButton" onclick="location.href='/menu/'">回選單</button>
 </div>
 
 <script>
 window.onload = async function () { 
-const token = localStorage.getItem('Token');
+  const token = localStorage.getItem('Token');
+
   const res = await fetch("http://127.0.0.1:8000/api/transactions/", {
     headers: { 'Authorization': `Token ${token}` }
   });
@@ -48,7 +49,7 @@ const token = localStorage.getItem('Token');
       <div class="amount ${parseFloat(tr.amount) < 0 ? 'plus' : 'minus'}"> 
         ${parseFloat(tr.amount) > 0 ? '-' : '+'}${parseFloat(tr.amount).toLocaleString()}
       </div> 
-    `;//因為api回傳的是正數
+    `;
     list.appendChild(card);
   });
 };

@@ -3,30 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <title>轉帳</title>
+
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
 </head>
 <body>
+
   <div class="transferContainer">
     <h2>請選擇轉帳類型</h2>
 
-    <button class="Registered" onclick="location.href='Registered.html'">約定轉帳</button>
-    <button class="nonRegistered" >非約定轉帳</button>
+    <!-- ✅ 修正 Registered → register/（不再 404） -->
+    <button class="Registered" onclick="location.href='/register/'">約定轉帳</button>
 
-    
+    <!-- ✅ 修正 class 對應 id，避免 JS 未來報錯 -->
+    <button id="nonRegistered" class="nonRegistered" onclick="goNext()">非約定轉帳</button>
+
+  </div>
 
   <script>
     function goNext() {
-      const nonReg = document.getElementById("nonRegistered").checked;
-      if (nonReg) {
-        location.href = "otp.html";
-      } else {
-        location.href = "notification.html";
-      }
+      // 這裡你未來如果要做勾選，邏輯可以放這裡
+      // 目前直接示範跳到 notification（或 OTP）
+
+      // ⚠️ 現在示範跳到通知頁，請依需求自行調整
+      location.href = "/notification/";
     }
   </script>
 
-  <button class="balanceButton" onclick="location.href='menu.html'">回選單</button>
+  <!-- ✅ 回主選單 -->
+  <button class="balanceButton" onclick="location.href='/menu/'">回選單</button>
+
 </body>
 </html>

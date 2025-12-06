@@ -24,7 +24,7 @@
   </div>
 
   <div class="logout">
-  <button class="backToMenu" onclick="location.href='menu.html'">回選單</button>
+  <button class="backToMenu" onclick="location.href='/menu/'">回選單</button>
 </div>
   </body>
 
@@ -80,7 +80,7 @@ window.onload = async function() {
     if (response.ok) {
       alert(`轉帳成功！\n新餘額：NT$ ${Number(data.new_balance).toLocaleString()}`);
       setTimeout(() => {
-        window.location.href = "menu.html";
+        window.location.href = "/menu/";
         }, 0); 
     } else {
       alert(`轉帳失敗：${data.detail}`);
