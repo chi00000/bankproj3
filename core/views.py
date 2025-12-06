@@ -139,4 +139,20 @@ class TransactionListView(generics.ListAPIView):
 # Serve frontend
 # -------------------
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'login.html')
+
+def menu(request):
+    return render(request, 'menu.html')
+
+def balance(request):
+    return render(request, 'balance.html')
+
+def transaction_page(request):
+    return render(request, 'transaction.html')
+
+def transfer_page(request):
+    return render(request, 'transfer.html')
+
+def register(request):
+    return render(request, 'Registered.html')
+
